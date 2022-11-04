@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:04:33 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/04 20:06:01 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:17:05 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,27 @@ static void	my(long int nbr, char *base)
 		write(1, &base[nbr % ft_strlen(base)], 1);
 }
 
+static void	my_u(long long unsigned nbr, char *base)
+{
+	else if (nbr >= ft_strlen(base))
+	{
+		my(nbr / ft_strlen(base), base);
+		write(1, &base[nbr % ft_strlen(base)], 1);
+	}
+	else
+		write(1, &base[nbr % ft_strlen(base)], 1);
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
 	if (check_base(base) == 1)
 		return ;
-	my (nbr, base);
+	my(nbr, base);
+}
+
+void	ft_putnbr_base_u(unsigned int nbr, char *base)
+{
+	if (check_base(base) == 1)
+		return ;
+	my_u(nbr, base);
 }
