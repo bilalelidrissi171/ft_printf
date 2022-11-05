@@ -6,7 +6,7 @@
 #    By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 20:41:47 by bel-idri          #+#    #+#              #
-#    Updated: 2022/11/03 20:46:18 by bel-idri         ###   ########.fr        #
+#    Updated: 2022/11/05 02:26:42 by bel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,18 @@ NAME = libftprintf.a
 
 SRCS = ft_printf.c \
 	ft_printf_functions.c \
+	ft_putnbrs.c \
 
 
-# SRCSB =
 
 
 
 OBJS = $(SRCS:.c=.o)
-# OBJSB = $(SRCSB:.c=.o)
 
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -36,9 +35,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
-
-# bonus: all $(OBJSB)
-# 	$(AR) $(NAME) $(OBJSB)
 
 %.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $<
@@ -51,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re # bonus
+.PHONY: all clean fclean re
