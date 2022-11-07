@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:54:31 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/05 16:16:58 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/07 14:26:13 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	ft_putstr(char *s)
 		return (ft_strlen("(null)"));
 	}
 	write(1, s, ft_strlen(s));
-	return (ft_strlen(s));
+	return ((int)ft_strlen(s));
 }
