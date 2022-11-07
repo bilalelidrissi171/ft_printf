@@ -6,7 +6,7 @@
 #    By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 20:41:47 by bel-idri          #+#    #+#              #
-#    Updated: 2022/11/07 19:25:11 by bel-idri         ###   ########.fr        #
+#    Updated: 2022/11/07 19:28:14 by bel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,7 @@ SRCS = ft_printf.c \
 	ft_putnbrs.c \
 	ft_printf_counters.c \
 
-
-
-
-
 OBJS = $(SRCS:.c=.o)
-
 
 CC = cc
 

@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:01:50 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/07 19:27:15 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/07 20:42:16 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	check_char(const char *str_format, int *res, size_t *i, va_list	*ap)
 	else if (str_format[*i] == '%')
 		*res += ft_putchr('%');
 	else
-		i--;
+		(*i)--;
 }
 
 int	ft_printf(const char *str_format, ...)
