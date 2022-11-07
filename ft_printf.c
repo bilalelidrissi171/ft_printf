@@ -6,61 +6,106 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:01:50 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/05 02:26:21 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:32:57 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	count_len_i_d(int s)
+{
+	int	i;
+
+	ft_putnbr_base_i_d(s, "0123456789");
+	i = 0;
+	if (s == 0)
+		return (1);
+	if (s < 0)
+		i++;
+	while (s)
+	{
+		s /= 10;
+		i++;
+	}
+	return (i);
+}
+
+static int	count_len_u_x(unsigned int s, char *base)
+{
+	int	i;
+
+	ft_putnbr_base_u_x(s, base);
+	i = 0;
+	if (s == 0)
+		return (1);
+	while (s)
+	{
+		s /= 10;
+		i++;
+	}
+	return (i);
+}
+
+static int	count_len_p(unsigned long s)
+{
+	int	i;
+
+	ft_putstr("0x");
+	ft_putnbr_base_p(s, "0123456789abcdef");
+	i = 0;
+	if (s == 0)
+		return (3);
+	while (s)
+	{
+		s /= 10;
+		i++;
+	}
+	return (i);
+}
+
 int	ft_printf(const char *str_format, ...)
 {
 	va_list	ap;
 	size_t	i;
+	int		res;
 
+	res = 0;
 	va_start(ap, str_format);
-
-	while(i < ft_strlen(str_format))
+	while (i < ft_strlen(str_format))
 	{
 		if (str_format[i] != '%')
-			write(1, &str_format[i], 1);
+			res += ft_putchr(str_format[i]);
 		else
 		{
 			i++;
 			if (str_format[i] == 'c')
-				ft_putchr(va_arg(ap, int));
+				res += ft_putchr(va_arg(ap, int));
 			else if (str_format[i] == 's')
-				ft_putstr(va_arg(ap, char *));
+				res += ft_putstr(va_arg(ap, char *));
 			else if (str_format[i] == 'p')
-			{
-				write(1, &"0x", 2);
-				ft_putnbr_base_p(va_arg(ap, unsigned long), "0123456789abcdef");
-			}
+				res += count_len_p(va_arg(ap, unsigned long));
 			else if (str_format[i] == 'd' || str_format[i] == 'i')
-				ft_putnbr_base_i_d(va_arg(ap, int), "0123456789");
+				res += count_len_i_d(va_arg(ap, int));
 			else if (str_format[i] == 'u')
-				ft_putnbr_base_u_x_X(va_arg(ap, unsigned int), "0123456789");
+				res += count_len_u_x(va_arg(ap, unsigned int), "0123456789");
 			else if (str_format[i] == 'x')
-				ft_putnbr_base_u_x_X(va_arg(ap, unsigned long), "0123456789abcdef");
+				res += count_len_u_x \
+				(va_arg(ap, unsigned long), "0123456789abcdef");
 			else if (str_format[i] == 'X')
-				ft_putnbr_base_u_x_X(va_arg(ap, unsigned long), "0123456789ABCDEF");
+				res += count_len_u_x \
+				(va_arg(ap, unsigned long), "0123456789ABCDEF");
 			else if (str_format[i] == '%')
-				ft_putchr('%');
-			else
-				ft_putchr('%');
+				res += ft_putchr('%');
 		}
 		i++;
 	}
 	va_end(ap);
-	return (0);
+	return (res);
 }
 
-// #include <stdio.h>
-
-// int main()
-// {
-// 	ft_printf("c = %c , s = %s , p = %p , d = %d , i = %i , u = %u , x = %x , X = %X , %%\n",'c',"salam",&"test",15,15,15,15,15);
-// 	printf("c = %c , s = %s , p = %p , d = %d , i = %i , u = %u , x = %x , X = %X , %%\n",'c',NULL,&"test",15,15,15,15,15);
-// 	//printf("c = %c , s = %s , p = %p , d = %d , i = %i , u = %u , x = %x , X = %X , %%\n",NULL,NULL,&"test",18446744073709551610ull,18446744073709551610ull,4294967295,4294967296,15);
-// 	//ft_printf("c = %c , s = %s , d = %d , i = %i , u = %u , x = %x , X = %X , %%\n",NULL,NULL,18446744073709551610ull,18446744073709551610ull,4294967295,4294967296,15);
-// }
-
+int main()
+{
+	void *d = "s";
+	int i = ft_printf("%x\n",d);
+	printf("%i",i);
+}

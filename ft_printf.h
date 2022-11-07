@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:01:47 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/05 00:57:01 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:13:47 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@
 
 int		ft_printf(const char *str_format, ...);
 size_t	ft_strlen(const char *s);
-void	ft_putstr(char *s);
-void	ft_putchr(char c);
+int		ft_putstr(char *s);
+int		ft_putchr(char c);
 void	ft_putnbr_base_i_d(int nbr, char *base);
-void	ft_putnbr_base_u_x_X(unsigned int nbr, char *base);
+void	ft_putnbr_base_u_x(unsigned int nbr, char *base);
 void	ft_putnbr_base_p(unsigned long long nbr, char *base);
-
-
-
 
 #endif
