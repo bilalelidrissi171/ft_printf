@@ -6,7 +6,7 @@
 #    By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 20:41:47 by bel-idri          #+#    #+#              #
-#    Updated: 2022/11/05 02:26:42 by bel-idri         ###   ########.fr        #
+#    Updated: 2022/11/07 19:25:11 by bel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libftprintf.a
 SRCS = ft_printf.c \
 	ft_printf_functions.c \
 	ft_putnbrs.c \
+	ft_printf_counters.c \
 
 
 
@@ -25,7 +26,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
