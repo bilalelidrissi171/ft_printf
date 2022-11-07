@@ -6,7 +6,7 @@
 /*   By: bel-idri <bel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:01:50 by bel-idri          #+#    #+#             */
-/*   Updated: 2022/11/07 20:56:15 by bel-idri         ###   ########.fr       */
+/*   Updated: 2022/11/07 21:08:40 by bel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static void	check_char(const char *str_format, int *res, size_t *i, va_list	*ap)
 	else if (str_format[*i] == 's')
 		*res += ft_putstr(va_arg(*ap, char *));
 	else if (str_format[*i] == 'p')
-		*res += count_len_p(va_arg(*ap, unsigned long long));
+		*res += count_len_p(va_arg(*ap, long long));
 	else if (str_format[*i] == 'd' || str_format[*i] == 'i')
 		*res += count_len_i_d(va_arg(*ap, int));
 	else if (str_format[*i] == 'u')
-		*res += count_len_u(va_arg(*ap, unsigned int));
+		*res += count_len_u(va_arg(*ap, int));
 	else if (str_format[*i] == 'x')
-		*res += count_len_x(va_arg(*ap, long int));
+		*res += count_len_x(va_arg(*ap, long));
 	else if (str_format[*i] == 'X')
-		*res += count_len_xx(va_arg(*ap, long int));
+		*res += count_len_xx(va_arg(*ap, long));
 	else if (str_format[*i] == '%')
 		*res += ft_putchr('%');
 	else
